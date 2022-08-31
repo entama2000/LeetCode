@@ -16,7 +16,7 @@ public:
                 {
                     ans.push_back(i);
                     ans.push_back(j);
-                    goto _EXIT;
+                    goto _EXIT; //exit if an answer is found
                 }
         }
         _EXIT:
