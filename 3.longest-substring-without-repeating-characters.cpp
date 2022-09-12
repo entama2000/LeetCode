@@ -11,7 +11,8 @@ public:
     int lengthOfLongestSubstring(string s) {
         queue<char> st;
         map<char, int> mp;
-        int max;
+        int max{0};
+        cout << s.length() << endl;
 
         for(int i = 0; i < s.length(); i++)
         {
@@ -36,6 +37,7 @@ public:
                 } while(c != s[i]);
                 if(max <= size)
                     max = size;
+                cout << size << " " << num << endl;
                 st.push(s[i]);
                 mp[s[i]] = 1;
                 
