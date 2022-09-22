@@ -8,23 +8,37 @@
 class Solution {
 public:
     string longestPalindrome(string s) {
-        int paln = 0;
-        for(int i = s.length(); i >= 1; i--)
+        
+        string result;
+        int len = s.length();
+        queue<pair<int, int>> q;
+
+        //1 char
+        for(int i = 0; i < len; i++)
+            q.push({i, 1});
+
+        //2 chars
+        for(int i = 0; i < len-1; i++)
+            if(s[i] == s[i+1])
+                q.push({i, 2});
+        //0 1 2 3 4 5
+        while(!q.empty())
         {
-            for(int j = 0; j <= s.length() - i; j++)
-                if(palind(s.substr(j, i)))
-                    return s.substr(j, i);
+            pair<int, int> temp = q.front();
+            q.pop();
+            if(temp.first != 0)
+                if(s[temp.first-1] == s[temp.first + temp.second])
+                    q.push({temp.first-1, temp.second+2});
+
+            if(q.empty())
+                result = s.substr(temp.first, temp.second);
         }
-        return 0;
+
+        return result;
+
+
     }
 
-    bool palind(string str)
-    {
-        for(int i = 0; i < str.length()/2; i++)
-            if(str[i] != str[str.length()-1-i])
-                return false;
-        return true;
-    }
 };
 // @lc code=end
 
