@@ -1,0 +1,2 @@
+LeetCode Memo:
+7, 8: solving using string or int, checking the number is in the range of a 32-bit signed integer.
