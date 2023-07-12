@@ -1,0 +1,54 @@
+//KMP
+/*
+ * @lc app=leetcode id=242 lang=java
+ *
+ * [242] Valid Anagram
+ */
+
+// @lc code=start
+
+import java.util.Arrays;
+
+class Solution {
+    public boolean isAnagram(String s, String t) {
+        int[] failure = makeTable(t);
+        //System.out.println(Arrays.toString(failure));
+        int slen = s.length();
+        int pat = 0;
+        int i = 0;
+        Boolean flag = false;
+        while (!flag && i < slen) {
+            if (s.charAt(i) == t.charAt(pat)) {
+                if (pat == t.length() - 1) {
+                    flag = true;
+                } else {
+                    pat++;
+                    i++;
+                }
+            } else if (pat > 0) {
+                pat = failure[pat];
+            } else {
+                i++;
+            }
+        }
+        return flag;
+    }
+
+    private int[] makeTable(String t) {
+        int len = t.length();
+        int[] failure = new int[len];
+        failure[0] = 0;
+        int ind = 0;
+        for (int i = 1; i < len; i++) {
+            if (t.charAt(ind) == t.charAt(i)) {
+                failure[i] = ind++;
+            } else {
+                failure[i] = ind;
+                ind = 0;
+            }
+        }
+        return failure;
+    }
+}
+// @lc code=end
+
