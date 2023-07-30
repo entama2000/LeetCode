@@ -1,3 +1,5 @@
 LeetCode Memo:
 7, 8: solving using string or int, checking the number is in the range of a 32-bit signed integer.
 15: search from both sides
+18: 4 sum need to review
+42: make hashMap from String Key
