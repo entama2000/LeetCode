@@ -1,0 +1,2 @@
+["MinStack","push","push","push","push","pop","getMin","pop","getMin","pop","getMin"]
+[[],[512],[-1024],[-1024],[512],[],[],[],[],[],[]]
